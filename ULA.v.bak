@@ -1,0 +1,23 @@
+module ALU (op_A, op_B, sel_ULA, out_ULA);
+
+input [3:0] op_a, op_B;
+input [2:0] sel_ULA;
+output reg [3:0] out_ULA;
+
+always @(*)
+begin
+   case (sel_ULA)
+	  0: out_ULA = op_a;
+	  1: out_ULA = ~op_a;
+	  2: out_ULA = op_b; 
+	  3: out_ULA = ~op_b;
+	  4: out_ULA = op_a & op_b;
+	  5: out_ULA = ~op_a & op_b;
+	  6: out_ULA = op_a & ~op_b;
+	  7: out_ULA = ~op_a & ~op_b;
+	default: out_ULA = 4'b0;
+   endcase
+end 
+
+endmodule 	
+	
